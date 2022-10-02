@@ -1,0 +1,103 @@
+{
+    "Leavesapplied":[
+        {
+            "Leaveid":"0000000001",
+            "EmployeeId":"0656",
+            "Startdate" : "Apr 02, 2022",
+            "Enddate" : "Apr 04,2022",
+            "type": "Casual",
+            "totalcasula": 0,
+            "totalsick":0,
+            "Reason": "Collage Examination",
+            "Status": "Reject"
+        },
+        {
+            "Leaveid":"0000000002",
+            "EmployeeId":"0656",
+            "Startdate" : "Apr 15, 2022",
+            "Enddate" : "Apr 16,2022",
+            "type": "Sick",
+            "totalcasula": 0,
+            "totalsick":0,
+            "Reason": "Examination",
+            "Status": "Applied"
+        },
+        {
+            "Leaveid":"0000000003",
+            "EmployeeId":"0656",
+            "Startdate" : "Apr 18, 2022",
+            "Enddate" : "Apr 22,2022",
+            "type": "Casual",
+            "totalcasula": 0,
+            "totalsick":0,
+            "Reason": "Examination",
+            "Status": "Applied"
+        },
+        {
+            "Leaveid":"0000000004",
+            "EmployeeId":"0651",
+            "Startdate" : "Apr 11, 2022",
+            "Enddate" : "Apr 15,2022",
+            "type": "Sick",
+            "totalcasula": 1,
+            "totalsick":2,
+            "Reason": "Collage Examination",
+            "Status": "Applied"
+        },
+        {
+            "Leaveid":"0000000005",
+            "EmployeeId":"0652",
+            "Startdate" : "Apr 11, 2022",
+            "Enddate" : "Apr 15,2022",
+            "type": "Sick",
+            "totalcasula": 2,
+            "totalsick":4,
+            "Reason": "Collage Examination",
+            "Status": "Applied"
+        },
+        {
+            "Leaveid":"0000000006",
+            "EmployeeId":"0653",
+            "Startdate" : "Apr 11, 2022",
+            "Enddate" : "Apr 15,2022",
+            "type": "Sick",
+            "totalcasula": 3,
+            "totalsick":8,
+            "Reason": "Collage Examination",
+            "Status": "Applied"
+        },{
+            "Leaveid":"0000000007",
+            "EmployeeId":"0654",
+            "Startdate" : "Apr 11, 2022",
+            "Enddate" : "Apr 15,2022",
+            "type": "Sick",
+            "totalcasula": 10,
+            "totalsick":7,
+            "Reason": "Collage Examination",
+            "Status": "Applied"
+        }
+    ],
+    "Status":[
+        {
+            "key":1,
+            "state":"Applied"
+        },{
+            "key":2,
+            "state":"Approved"
+        },{
+            "key":3,
+            "state":"Reject"
+        }
+    ],
+    "leavetype":[
+        {
+            "key":1,
+            "state":"Casual"
+        },{
+            "key":2,
+            "state":"Sick"
+        }
+    ],
+    "sickleave": 7,
+    "casualleave": 10
+}

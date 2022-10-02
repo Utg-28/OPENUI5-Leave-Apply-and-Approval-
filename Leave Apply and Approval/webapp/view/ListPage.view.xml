@@ -1,0 +1,70 @@
+<mvc:View
+controllerName="webapp.controller.ListPage"
+    xmlns='sap.m'
+    xmlns:mvc='sap.ui.core.mvc'
+    xmlns:core="sap.ui.core"
+    xmlns:t='sap.tnt'>
+
+    <Page title='Leaves Applied'>
+
+        <Table autoPopinMode="true"   alternateRowColors='true' id="leavetable" headerText="{i18n>leavelist}"  items="{leavedata>/Leavesapplied}" >
+
+            <headerToolbar>
+                <OverflowToolbar >
+                    	<Title text="{i18n>leavesapplied}" level="H2" />
+                        <ToolbarSpacer/>
+                        <Button text='{i18n>fulllist}' press="onfullistpress"/>
+                        <Button text='{i18n>advancesearch}' press="onSearch" icon='sap-icon://search' type="Emphasized"/>
+                        <Button icon='sap-icon://add' press="onNewapply"/>
+                        <Button	icon="sap-icon://download" press="onDataExport" />
+                </OverflowToolbar>
+            </headerToolbar>
+                <columns>
+                    <Column></Column>
+                    <Column></Column>
+                    <Column></Column>
+                    <Column></Column>
+                </columns>
+
+            <items>
+                <ColumnListItem type="Navigation" press="onPresstodetail">
+                    <cells>
+                        <VBox class='sapUiSmallMargin'>
+                            <HBox>
+                                <core:Icon src='sap-icon://building' />
+                                <t:InfoLabel class='sapUiTinyMarginBegin' text='{leavedata>EmployeeId}'/>
+                            </HBox>
+                            <t:InfoLabel colorScheme='1' text="{ parts: [ {path :'leavedata>EmployeeId'},{path: 'employedata>/Employees'}],
+                                            formatter: '.formatter.name'    
+                            }"></t:InfoLabel>
+                        </VBox>
+                        
+                        <HBox >
+                            <t:InfoLabel colorScheme="{= ${leavedata>Status}==='Applied'? 3: 7}" text="{leavedata>Status}" />
+                            <Text text='{leavedata>type}' class='sapUiTinyMarginBegin' />
+                        </HBox>
+
+                        <HBox id='startdate'>
+                             <core:Icon src='sap-icon://calendar' backgroundColor='Marker'/>
+                             <Text class='sapUiTinyMarginBegin colorstart' text='{leavedata>Startdate}'/>
+                        </HBox>
+
+                        <HBox id='enddate'>
+                            <core:Icon src='sap-icon://calendar' backgroundColor='Marker'/>  
+                            <Text class='sapUiTinyMarginBegin colorend' text='{leavedata>Enddate}'/>
+                        </HBox>
+
+                        
+                    </cells>
+                    </ColumnListItem>
+            </items>
+
+
+
+        </Table>
+
+
+
+    </Page>
+
+</mvc:View>

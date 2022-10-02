@@ -1,0 +1,10 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="selectDialog"
+		title="{i18n>selectfromlist}"
+		items="{leavedata>/Leavesapplied}"
+		confirm='onValueHelpClose1'>
+		<StandardListItem
+			title="{leavedata>Leaveid}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

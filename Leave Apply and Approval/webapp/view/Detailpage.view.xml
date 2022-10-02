@@ -1,0 +1,205 @@
+<mvc:View controllerName="webapp.controller.DetailPage"
+    xmlns:uxap="sap.uxap"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns='sap.m'
+    xmlns:layout="sap.ui.layout">
+
+    <Page title='Detail Page'>
+        <uxap:ObjectPageLayout useIconTabBar="true" upperCaseAnchorBar="false" showEditHeaderButton="true">
+            <uxap:headerTitle>
+                <uxap:ObjectPageDynamicHeaderTitle >
+                    <uxap:expandedHeading>
+                        <Title text="{=${newdata>/name} ==='' ? 'New Apply' : ${newdata>/name} }" id='headertext1'></Title>
+                    </uxap:expandedHeading>
+
+                    <uxap:snappedHeading>
+                        <FlexBox fitContainer="true" alignItems="Center">
+                            <!-- <VBox> -->
+                                <Avatar src="../image/pic1.png" class="sapUiTinyMarginEnd"/>
+                                <VBox>
+                                    <Text text='{newdata>/Leaveid} - '></Text>
+                                    <Title text="{=${newdata>/name} ==='' ? 'New Apply' : ${newdata>/name} }" id='headertext'></Title>
+                                </VBox>
+                                <Text class='sapUiSmallMargin' text="{i18n>currentstatus} : {newdata>/Status}" id='headerstatus1'></Text>
+                            <!-- </VBox> -->
+                        </FlexBox>
+                    </uxap:snappedHeading>
+
+                    <uxap:actions>
+                        <OverflowToolbarButton press='onedit' id='editbutton' visible="{edit>/buttonvisible}" icon="sap-icon://edit" text="edit header" type="Emphasized" tooltip="edit"></OverflowToolbarButton>
+                        <OverflowToolbarButton press='onBacktoListpage' icon='sap-icon://sys-back-2' text='{i18n>backtolistpage}'></OverflowToolbarButton>
+                    </uxap:actions>
+    
+                </uxap:ObjectPageDynamicHeaderTitle>
+            </uxap:headerTitle>
+
+            <uxap:headerContent>
+                <layout:VerticalLayout >
+                    <Text text="{i18n>currentstatus} : {newdata>/Status}" id='headerstatus'></Text>
+                </layout:VerticalLayout>
+            </uxap:headerContent>
+
+            <uxap:sections>
+                <uxap:ObjectPageSection id="detailsection" title="{i18n>details}">
+                    <uxap:ObjectPageSubSection >
+                        <uxap:blocks>
+
+                            <form:Form editable="true">
+                                <form:layout>
+                                    <form:ResponsiveGridLayout columnsXL="1" columnsL="1" columnsM="1"/>
+                                </form:layout>
+
+                                <form:formContainers>
+                                    <form:FormContainer>
+                                        <form:formElements>
+                                            <form:FormElement label='{i18n>leaveid}'>
+                                                <form:fields>
+                                                    <Text text='{newdata>/Leaveid}'></Text>
+                                                </form:fields>
+                                            </form:FormElement>
+
+                                            <form:FormElement label='{i18n>employeeid}'>
+                                                <form:fields >
+                                                    <Input id='check1' required="true" type='Number' editable="{edit>/input}" value="{
+                                                        path: 'newdata>/EmployeeId',
+                                                        type: 'sap.ui.model.type.String',
+                                                        constraints: {
+                                                        minLength: 4,
+                                                        maxLength: 4
+                                                        }
+                                                    }"></Input>
+                                                </form:fields>
+                                            </form:FormElement>
+
+
+                                            <form:FormElement label='{i18n>employeename}'>
+                                                <form:fields>
+                                                    <Input id='check2' required="true" editable="{edit>/input}" value="{
+                                                        path: 'newdata>/name',
+                                                        type: 'sap.ui.model.type.String',
+                                                        constraints: {
+                                                        minLength: 3,
+                                                        maxLength: 40
+                                                        }
+                                                    }"></Input>
+                                                </form:fields>
+                                            </form:FormElement>
+
+
+                                            <form:FormElement label='{i18n>startdate}'>
+                                                <form:fields>
+                                                    <DatePicker required="true" id='startdate' valueFormat ="MMM dd, yyyy" editable="{edit>/input}" value="{newdata>/Startdate}" showFooter="true"></DatePicker>
+                                                </form:fields>
+                                            </form:FormElement>
+
+
+                                            <form:FormElement label='{i18n>enddate}'>
+                                                <form:fields>
+                                                    <DatePicker required="true" id="enddate" valueFormat ="MMM dd, yyyy" editable="{edit>/input}" value="{newdata>/Enddate}" showFooter="true"></DatePicker>
+                                                </form:fields>
+                                            </form:FormElement>
+
+
+                                            <form:FormElement label='{i18n>leavetype}'>
+                                                <form:fields>
+
+                                                    <ComboBox change='onchangecomboboxtype' required="true" id='check3' value='{newdata>/type}' editable="{edit>/input}" items="{
+                                                        path: 'leavedata>/leavetype'
+                                                    }">
+                                                        <core:Item key="{leavedata>key}" text="{leavedata>state}" />
+                                                    </ComboBox>
+
+                                                </form:fields>
+                                            </form:FormElement>
+
+
+                                            <form:FormElement  label='{i18n>remainingsick}'>
+                                                <form:fields>
+                                                    <Text id='sick' text="{
+                                                        parts: [{path: 'leavedata>/sickleave'},{path:'newdata>/sick'}],
+                                                        formatter: '.formatter.leavecalculator'
+                                                    }"></Text>
+                                                </form:fields>
+                                            </form:FormElement>
+                                            <form:FormElement label='{i18n>remainingcasual}'>
+                                                <form:fields>
+                                                    <Text id='casual' text="{
+                                                        parts: [{path: 'leavedata>/casualleave'},{path:'newdata>/casual'}],
+                                                        formatter: '.formatter.leavecalculator'
+                                                    }"></Text>
+                                                </form:fields>
+                                            </form:FormElement>
+
+                                            <form:FormElement label='{i18n>contactnumber}'>
+                                                <form:fields>
+                                                    <Input id='check4' required="true" type="Number" editable="{edit>/input}" value="{
+                                                        path: 'newdata>/Contactno',
+                                                         type: 'sap.ui.model.type.String',
+                                                        constraints: {
+                                                            minLength: 10,
+                                                            maxLength: 10
+                                                        }
+                                                    }"></Input>
+                                                </form:fields>
+                                            </form:FormElement>
+
+
+                                            <form:FormElement label='{i18n>reason}'>
+                                                <form:fields>
+                                                    <TextArea id='check5' required="true" showExceededText="true" maxLength="100" editable="{edit>/input}" value="{newdata>/Reason}"></TextArea>
+                                                </form:fields>
+                                            </form:FormElement>
+
+
+                                            <form:FormElement label='{i18n>Status}'>
+                                                <form:fields>
+                                                    <ComboBox change='onchangecomboboxstatus' id='status' required="true" value='{newdata>/Status}' items="{
+                                                    path: 'leavedata>/Status'
+                                                }">
+                                                        <core:Item key="{leavedata>key}" text="{leavedata>state}" />
+                                                    </ComboBox>
+
+                                                </form:fields>
+                                            </form:FormElement>
+
+
+                                            <form:FormElement visible="{edit>/input}">
+                                                <form:fields>
+                                                    <ToolbarSpacer></ToolbarSpacer>
+                                                    <Button type="Accept" text="{i18n>submit}" press="onsubmitform"></Button>
+                                                    <Button type='Reject' text='{i18n>cancel}' press="oncancelform"></Button>
+                                                </form:fields>
+                                            </form:FormElement>
+
+                                        </form:formElements>
+                                    </form:FormContainer>
+                                </form:formContainers>
+                            </form:Form>
+
+
+                        </uxap:blocks>
+
+                    </uxap:ObjectPageSubSection>
+                </uxap:ObjectPageSection>
+
+                <uxap:ObjectPageSection id="previoussection" title="{i18n>previousleaves}">
+                    <uxap:ObjectPageSubSection >
+                        <uxap:blocks>
+                            <List headerText='{i18n>previousdata}' items='{previous>/}'>
+                                <StandardListItem title="From {previous>Startdate} To {previous>Enddate}" description="{previous>type}" />
+
+                            </List>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+
+                </uxap:ObjectPageSection>
+            </uxap:sections>
+
+        </uxap:ObjectPageLayout>
+
+    </Page>
+
+
+</mvc:View>

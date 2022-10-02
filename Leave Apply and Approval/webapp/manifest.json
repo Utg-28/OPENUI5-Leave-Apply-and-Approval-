@@ -1,0 +1,95 @@
+{
+    "_version": "1.1.0",
+    "sap.app": {
+        "_version": "1.1.0",
+        "id": "webapp",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        }
+    },
+    "sap.ui": {
+        "_version": "1.1.0",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_bluecrystal"
+        ]
+    },
+    "sap.ui5": {
+        "_version": "1.1.0",
+        "rootView": {
+            "viewName": "webapp.view.App",
+            "type": "XML",
+            "async": true
+        },
+        "handleValidation": false,
+        "config": {},
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "webapp.i18n.i18n"
+                }
+            },              
+            "leavedata":{
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "model/Leave.json"
+            },
+            "employedata":{
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "model/Employee.json"
+            }
+            
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "type": "View",
+                "viewType": "XML",
+                "path": "webapp.view",
+                "controlId": "app",
+                "controlAggregation": "pages"
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "nListpage",
+                    "target": "tlistpage"
+                },{
+                    "pattern": "detail/{id}/nDetailpagefromplus",
+                    "name":"nDetailpagefromplus",
+                    "target":"tDetailpageFromPlus"
+                },{
+                    "pattern": "detail/{id}/nDetailpagefromlist",
+                    "name":"nDetailpagefromlist",
+                    "target":"tDetailpage"
+                }
+                
+            ],
+            "targets": {
+                "tlistpage": {
+                    "name": "ListPage"
+                },
+                "tDetailpageFromPlus":{
+                    "name": "Detailpage"
+                },
+                "tDetailpage":{
+                    "name": "Detailpage"
+                }
+            }
+        }
+    }
+}

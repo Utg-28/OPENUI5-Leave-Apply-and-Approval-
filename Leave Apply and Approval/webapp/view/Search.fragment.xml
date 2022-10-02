@@ -1,0 +1,70 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+    <Popover placement="Bottom" id="popover" modal='true' >
+
+        <f:Form editable="true" width='100%'>
+
+
+            <f:layout>
+                <f:ResponsiveGridLayout labelSpanM='3' columnsXL="1" columnsL="1" columnsM="1">
+                </f:ResponsiveGridLayout>
+            </f:layout>
+
+
+            <f:formContainers>
+                <f:FormContainer title='{i18n>enterinfo}'>
+                    <f:FormElement label='{i18n>leaveid}'>
+                        <f:fields>
+                            <Input required="true" value="{searchmodel>/leaveid}" suggestionItems='{leavedata>/Leavesapplied}' showSuggestion="true" showValueHelp="true" id='leaveid' valueHelpRequest='onvalueHelpRequest1'>
+                                <suggestionItems>
+                                    <core:Item text='{leavedata>Leaveid}'></core:Item>
+                                </suggestionItems>
+                            </Input>
+
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label='{i18n>employeename}'>
+                        <f:fields>
+                            <Input value='{searchmodel>/empname}' suggestionItems='{employedata>/Employees}' showSuggestion="true" required="true" id='employeename' showValueHelp="true" valueHelpRequest='onvalueHelpRequest2'>
+                                 <suggestionItems>
+                                    <core:Item text='{employedata>empname}'></core:Item>
+                                </suggestionItems>
+                            </Input>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement  label='{i18n>leavetype}'>
+                        <f:fields>
+                            <ComboBox value='{searchmodel>/type}' editable="{edit>/input}" items="{
+                                                        path: 'leavedata>/leavetype'
+                                                    }">
+                                <core:Item key="{leavedata>key}" text="{leavedata>state}" />
+                            </ComboBox>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label='{i18n>status}'>
+                        <f:fields>
+                            <ComboBox value='{searchmodel>/status}' editable="{edit>/input}" items="{
+                                                    path: 'leavedata>/Status'
+                                                }">
+                                <core:Item key="{leavedata>key}" text="{leavedata>state}" />
+                            </ComboBox>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement >
+                        <f:fields>
+                            <Button text='{i18n>submit}' type='Accept' press='onSubmitPress'></Button>
+                        </f:fields>
+                    </f:FormElement>
+                </f:FormContainer>
+            </f:formContainers>
+        </f:Form>
+        <beginButton>
+            <Button text='{i18n>cancel}' press='onCancelpress' id='searchbutton'/>
+        </beginButton>
+        <endButton>
+            <Button text='{i18n>reset}' press='onResetPress' id='resetbutton'/>
+        </endButton>
+
+    </Popover>
+</core:FragmentDefinition>

@@ -1,0 +1,41 @@
+{
+    "Employees":[
+        {
+            "empid": "0656",
+            "empname": "Utkarsh Gupta",
+            "ContactNo": 9140796142,
+            "sickleavetake":0,
+            "casualleavetaken":0
+        },
+        {
+            "empid": "0651",
+            "empname": "Prem Singh",
+            "ContactNo": 9540716142,
+            "sickleavetake":0,
+            "casualleavetaken":0
+        },
+        {
+            "empid": "0652",
+            "empname": "Jyoti Rai",
+            "ContactNo": 8740794942,
+            "sickleavetake":0,
+            "casualleavetaken":0
+        },
+        {
+            "empid": "0653",
+            "empname": "Shreyash Iyer",
+            "ContactNo": 9107796142,
+            "sickleavetake":0,
+            "casualleavetaken":0
+        },
+        {
+            "empid": "0654",
+            "empname": "Shvivansh",
+            "ContactNo": 8414079614,
+            "sickleavetake":0,
+            "casualleavetaken":0
+        }   
+    ]
+
+   
+}
